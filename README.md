@@ -194,38 +194,4 @@ const codedany = {
 
 ---
 
-<details>
-<summary>⚙️ <b>Cómo activar la serpiente animada de contribuciones</b></summary>
 
-1. En tu repo `2007-herlin/2007-herlin`, crea `.github/workflows/snake.yml`:
-
-```yaml
-name: Generate Snake
-
-on:
-  schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Platane/snk@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-      - uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-```
-
-2. Ve a **Actions** en GitHub → ejecuta el workflow manualmente.
-3. ¡Listo! La serpiente se activa automáticamente cada día 🐍✨
-
-</details>
